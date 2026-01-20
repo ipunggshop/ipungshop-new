@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPUNGG SHOP</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:#fff;}
+header{background:#111827;padding:14px;display:flex;align-items:center;gap:12px;font-weight:bold;}
+header .logo{width:40px;height:40px;background:#111;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:bold;}
+header .info{display:flex;flex-direction:column;font-size:14px;}
+.title-section{text-align:center;margin:16px;}
+.title-section img{width:100%;max-height:180px;border-radius:16px;object-fit:cover;}
+.title-section h1{margin:12px 0 4px;font-size:18px;}
+.title-section p{margin:0;font-size:14px;color:#94a3b8;}
+section{margin:16px;}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.card{background:#020617;padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:6px;}
+.card span{color:#22c55e;font-weight:bold;}
+button, .btn-order{margin-top:8px;padding:10px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-weight:bold;cursor:pointer;text-align:center;text-decoration:none;}
+
+/* SEWA BOT */
+.sewa-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+.sewa-item{display:flex;justify-content:space-between;align-items:center;background:#020617;padding:10px 12px;border-radius:10px;}
+.sewa-item span{color:#22c55e;font-weight:bold;}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);justify-content:center;align-items:center;z-index:9999;}
+.box{background:#111827;padding:20px;border-radius:14px;width:90%;max-width:500px;max-height:90%;overflow-y:auto;}
+#sc-fullscreen{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#111;color:#0ff;overflow-y:auto;padding:20px;box-sizing:border-box;font-family:monospace;z-index:9999;}
+#sc-fullscreen h2{margin-top:0;font-size:20px;text-align:center;margin-bottom:12px;}
+#sc-fullscreen ul{padding-left:20px;}
+#sc-fullscreen li{margin-bottom:6px;line-height:1.4;}
+#sc-fullscreen .btn-wa{margin-top:12px;padding:10px;background:#2563eb;color:#fff;border:none;border-radius:10px;font-weight:bold;width:100%;cursor:pointer;text-decoration:none;display:block;text-align:center;}
+#sc-fullscreen button.close-sc{margin-top:12px;padding:10px;background:#f43f5e;color:#fff;border:none;border-radius:10px;font-weight:bold;width:100%;cursor:pointer;}
+footer{text-align:center;padding:14px;color:#94a3b8;font-size:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class=""></div>
+  <div class="info">
+    <strong>IPUNGG SHOP</strong>
+    <small>Premium Digital Solution</small>
+  </div>
+</header>
+
+<section class="title-section">
+  <h1>WEBSITE PRODUK IPUNGG</h1>
+  <p>Buy Panel & Script Otomatis</p>
+  <img src="https://files.catbox.moe/b9o0br.jpg" alt="Banner IPUNGG SHOP">
+</section>
+
+<!-- PANEL HOSTING -->
+<section>
+<h3>📦 PANEL HOSTING</h3>
+<div class="cards">
+  <div class="card">4 GB<br><span>Rp 2.000</span><button onclick="orderWA('Panel 4GB')">ORDER PANEL</button></div>
+  <div class="card">5 GB<br><span>Rp 4.000</span><button onclick="orderWA('Panel 5GB')">ORDER PANEL</button></div>
+  <div class="card">6 GB<br><span>Rp 5.000</span><button onclick="orderWA('Panel 6GB')">ORDER PANEL</button></div>
+  <div class="card">8 GB<br><span>Rp 7.000</span><button onclick="orderWA('Panel 8GB')">ORDER PANEL</button></div>
+  <div class="card">10 GB<br><span>Rp 8.000</span><button onclick="orderWA('Panel 10GB')">ORDER PANEL</button></div>
+  <div class="card">UNLIMITED<br><span>Rp 10.000</span><button onclick="orderWA('Panel UNLIMITED')">ORDER PANEL</button></div>
+</div>
+</section>
+
+<!-- VPS -->
+<section>
+<h3>💻 PAKET VPS</h3>
+<div class="cards">
+  <div class="card">RAM 16GB | Core 4<br><span>Rp 15K</span><button onclick="orderWA('VPS RAM 16GB | Core 4')">ORDER</button></div>
+  <div class="card">RAM 16GB | Core 8<br><span>Rp 20K</span><button onclick="orderWA('VPS RAM 16GB | Core 8')">ORDER</button></div>
+</div>
+</section>
+
+<!-- SCRIPT ASUNA -->
+<section>
+<h3>🤖 SCRIPT ASUNA</h3>
+<div class="card">
+<strong>Asuna Yuuki AI MD v8.5.0</strong><br>
+<span>Rp 60.000</span>
+<button onclick="openSC('script')">LIHAT LIST</button>
+</div>
+</section>
+
+<!-- SEWA BOT -->
+<section>
+<h3>📦 SEWA BOT IPUNGG</h3>
+<div class="card">
+<strong>sewa bot</strong><br>
+<button onclick="openSC('sewa')">LIHAT LIST</button>
+</div>
+</section>
+
+<!-- MODAL SCRIPT / SEWA -->
+<div id="sc-fullscreen">
+  <h2 id="sc-title">📜 List</h2>
+  <ul id="sc-list">
+    <!-- List akan diisi JS -->
+  </ul>
+  <a class="btn-wa" id="sc-wa" href="#" target="_blank">ORDER KE WHATSAPP</a>
+  <button class="close-sc" onclick="closeSC()">TUTUP</button>
+</div>
+
+<footer>
+© 2026 IPUNGG SHOP<br>
+<em>Web boleh ditiru, rezeki jangan dicuri.</em>
+</footer>
+
+<script>
+// ORDER PANEL/VPS WA
+function orderWA(text){
+  window.open('https://wa.me/6283840810226?text=Saya+ingin+beli+'+encodeURIComponent(text),'_blank');
+}
+
+// SCRIPT / SEWA LIST
+const lists = {
+  script:[
+    "1000+ fitur lengkap (Include premium apikey)",
+    "Menu stiker, maker tofigure dll lengkap",
+    "Sewa bot otomatis, premium bot otomatis",
+    "Set menu, button & no button",
+    "Auto downloader, anti tag sw, anti bot, antilink, dll",
+    "Menu store, sistem list katalog",
+    "Smart auto ai vn & text menggunakan sessions",
+    "Rapi & bersih — riname cuman di satu file",
+    "Selalu diupdate — maintenance rutin",
+    "Anti over-limit / anti bad session",
+    "Siap online 24/7",
+    "✅ Free update",
+    "✅ Sc terjaga",
+    "✅ Keluh kesah di dengerin",
+    "✅ Masuk grup info update",
+    "✅ Req fitur tiap update"
+  ],
+  sewa:[
+    "7K / Minggu",
+    "15K / Bulan",
+    "25K / 2 Bulan",
+    "30K / Permanen",
+    "50K / Bot Permanen",
+    "LIST FITUR BOT IPUNGG",
+    "✓ Anti link",
+    "✓ Anti bot",
+    "✓ Anti tag SW",
+    "✓ Auto downloader",
+    "✓ Kick member otomatis / manual",
+    "✓ Tag all & hidetag",
+    "✓ Menu stiker & maker",
+    "✓ Fitur game",
+    "✓ HD foto",
+    "✓ Store menu / katalog",
+    "✓ Dan banyak fitur lainnya"
+  ]
+};
+
+function openSC(type){
+  const title = type==='script' ? "📜 List Script Asuna Yuuki AI MD v8.5.0" : "📜 List Sewa Bot IPUNGG";
+  const waText = type==='script' ? "Script Asuna Yuuki AI MD v8.5.0" : "sewa bot";
+  document.getElementById('sc-title').innerText = title;
+  const ul = document.getElementById('sc-list');
+  ul.innerHTML = '';
+  lists[type].forEach(item=>{
+    const li = document.createElement('li');
+    li.innerText = item;
+    ul.appendChild(li);
+  });
+  document.getElementById('sc-wa').href = 'https://wa.me/6283840810226?text=Saya+ingin+beli+'+encodeURIComponent(waText);
+  document.getElementById('sc-fullscreen').style.display='block';
+}
+
+function closeSC(){document.getElementById('sc-fullscreen').style.display='none';}
+</script>
+
+</body>
+</html>
